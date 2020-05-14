@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 ###############################################################################
 #
 # Copyright 2006 - 2019, Paul Beckingham, Federico Hernandez.

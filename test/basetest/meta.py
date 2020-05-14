@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 class MetaTest(type):
     """Helper metaclass to simplify dynamic test creation
