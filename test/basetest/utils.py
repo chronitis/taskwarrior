@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import division
 import errno
 import os
 import sys
@@ -10,15 +9,9 @@ import atexit
 import tempfile
 from subprocess import Popen, PIPE, STDOUT
 from threading import Thread
-try:
-    from Queue import Queue, Empty
-except ImportError:
-    from queue import Queue, Empty
+from queue import Queue, Empty
 from time import sleep
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 from .exceptions import CommandError, TimeoutWaitingFor
 
 USED_PORTS = set()

@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import division
 import errno
 import os
 from sys import stderr
 import shutil
 import stat
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 
 from datetime import datetime
 from .utils import DEFAULT_HOOK_PATH
