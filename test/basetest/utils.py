@@ -315,7 +315,7 @@ def find_unused_port(addr="localhost", start=53589, track=True):
     maxport = 65535
     unused = None
 
-    for port in xrange(start, maxport):
+    for port in range(start, maxport):
         if not port_used(addr, port):
             if track and port in USED_PORTS:
                 continue
