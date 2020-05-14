@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from __future__ import print_function
 from subprocess import call
 import argparse
 import glob
@@ -57,7 +56,7 @@ def main():
             run_test(test)
     else:
         if not cmd_args.noprompt:
-            r = raw_input("No test was specified, are you sure you want to run all tests? (y/N)\n")
+            r = input("No test was specified, are you sure you want to run all tests? (y/N)\n")
             if not (r and r[0] in ["y", "Y"]):
                 return
 
