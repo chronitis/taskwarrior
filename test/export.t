@@ -38,7 +38,6 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from basetest import Task, TestCase
 from basetest.utils import UUID_REGEXP
-from basetest.compat import STRING_TYPE
 
 DATETIME_FORMAT = "%Y%m%dT%H%M%SZ"
 
@@ -61,7 +60,7 @@ class TestExportCommand(TestCase):
         """
 
         # Timestamps should be exported as strings
-        self.assertType(value, STRING_TYPE)
+        self.assertType(value, str)
         # And they should follow the %Y%m%dT%H%M%SZ format
         datetime.datetime.strptime(value, DATETIME_FORMAT)
 
@@ -72,7 +71,7 @@ class TestExportCommand(TestCase):
         regular expression object.
         """
 
-        self.assertType(value, STRING_TYPE)
+        self.assertType(value, str)
 
         if expected_value is not None:
             if regexp:
