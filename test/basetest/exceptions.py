@@ -1,7 +1,7 @@
 import signal
 
-sig_names = dict((k, v) for v, k in reversed(sorted(signal.__dict__.items()))
-                 if v.startswith('SIG') and not v.startswith('SIG_'))
+sig_names = {k: v for v, k in reversed(sorted(signal.__dict__.items()))
+             if v.startswith('SIG') and not v.startswith('SIG_')}
 
 
 class CommandError(Exception):
@@ -38,7 +38,7 @@ class HookError(Exception):
     pass
 
 
-class TimeoutWaitingFor(object):
+class TimeoutWaitingFor:
     def __init__(self, name):
         self.name = name
 
@@ -47,7 +47,7 @@ class TimeoutWaitingFor(object):
             self.name)
 
 
-class StreamsAreMerged(object):
+class StreamsAreMerged:
     def __repr__(self):
         return "*** Streams are merged, STDERR is not available ***"
 

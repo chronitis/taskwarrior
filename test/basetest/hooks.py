@@ -11,7 +11,7 @@ from .utils import DEFAULT_HOOK_PATH
 from .exceptions import HookError
 
 
-class InvalidJSON(object):
+class InvalidJSON:
     """Object representing the original unparsed JSON string and the JSON error
     """
     def __init__(self, original, error):
@@ -31,7 +31,7 @@ def json_decoder(string):
         return InvalidJSON(string, str(e))
 
 
-class Hooks(object):
+class Hooks:
     """Abstraction to help interact with hooks (add, remove) during tests and
     keep track of which are active.
     """
@@ -146,7 +146,7 @@ class Hooks(object):
         os.mkdir(self.hookdir)
 
 
-class Hook(object):
+class Hook:
     """Represents a hook script and provides methods to enable/disable hooks
     """
     def __init__(self, hookname, hookdir, content=None, default=False,
@@ -288,7 +288,7 @@ class LoggedHook(Hook):
     was received via STDIN and what was answered to STDOUT
     """
     def __init__(self, *args, **kwargs):
-        super(LoggedHook, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         # The wrapper will replace the hookfile
         # The original file will be 'wrappedfile'
@@ -317,7 +317,7 @@ class LoggedHook(Hook):
 
         Don't call this method directly. Use Task.hooks.remove(hook) instead
         """
-        super(LoggedHook, self)._delete()
+        super()._delete()
         self._remove_file(self.wrappedfile)
         self._remove_file(self.hooklog_in)
         self._remove_file(self.hooklog_out)
@@ -366,19 +366,19 @@ class LoggedHook(Hook):
     def enable(self):
         """Make hookfile executable to allow triggering
         """
-        super(LoggedHook, self).enable()
+        super().enable()
         os.chmod(self.wrappedfile, stat.S_IREAD | stat.S_IWRITE | stat.S_IEXEC)
 
     def disable(self):
         """Remove hookfile executable bit to deny triggering
         """
-        super(LoggedHook, self).disable()
+        super().disable()
         os.chmod(self.wrappedfile, stat.S_IREAD | stat.S_IWRITE)
 
     def is_active(self):
         """Check if hook is active by verifying the execute bit
         """
-        parent_is_active = super(LoggedHook, self).disable()
+        parent_is_active = super().disable()
         return parent_is_active and os.access(self.wrappedfile, os.X_OK)
 
     def get_logs(self):

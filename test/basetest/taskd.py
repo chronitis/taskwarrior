@@ -15,7 +15,7 @@ from .exceptions import CommandError
 from subprocess import DEVNULL
 
 
-class Taskd(object):
+class Taskd:
     """Manage a taskd instance
 
     A temporary folder is used as data store of taskd.
@@ -94,7 +94,7 @@ class Taskd(object):
         self.default_user = self.create_user()
 
     def __repr__(self):
-        txt = super(Taskd, self).__repr__()
+        txt = super().__repr__()
         return "{0} running from {1}>".format(txt[:-1], self.datadir)
 
     def reset_env(self):

@@ -12,7 +12,7 @@ from .hooks import Hooks
 from .utils import run_cmd_wait, run_cmd_wait_nofail, which, task_binary_location
 
 
-class Task(object):
+class Task:
     """Manage a task warrior instance
 
     A temporary folder is used as data store of task warrior.
@@ -61,7 +61,7 @@ class Task(object):
         self.hooks = None
 
     def __repr__(self):
-        txt = super(Task, self).__repr__()
+        txt = super().__repr__()
         return "{0} running from {1}>".format(txt[:-1], self.datadir)
 
     def __call__(self, *args, **kwargs):

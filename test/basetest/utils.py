@@ -12,6 +12,7 @@ from queue import Queue, Empty
 from time import sleep
 import json
 from .exceptions import CommandError, TimeoutWaitingFor
+from shutil import which
 
 USED_PORTS = set()
 ON_POSIX = 'posix' in sys.builtin_module_names
@@ -355,7 +356,6 @@ def memoize(obj):
     return memoizer
 
 
-from shutil import which
 which = memoize(which)
 
 
