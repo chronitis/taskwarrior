@@ -64,9 +64,7 @@ class MetaTestSorting(MetaTest):
         return test
 
 
-class TestSorting(TestCase):
-    __metaclass__ = MetaTestSorting
-
+class TestSorting(TestCase, metaclass=MetaTestSorting):
     @classmethod
     def setUpClass(cls):
         cls.t = Task()
@@ -203,11 +201,7 @@ class TestSorting(TestCase):
     )
 
 
-class TestBug438(TestCase):
-    __metaclass__ = MetaTestSorting
-
-    # Bug #438: Reports sorting by end, start, and entry are ordered
-    #           incorrectly, if time is included.
+class TestBug438(TestCase, metaclass=MetaTestSorting):
     @classmethod
     def setUpClass(cls):
         cls.t = Task()
